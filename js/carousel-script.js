@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         on: {
             slideChange: function () {
-                //console.log(this.activeIndex)
                 var activeSlide = document.querySelectorAll('.swiper-slide')[this.activeIndex];
                 document.querySelectorAll(".swiper-slide").forEach((e) => {
                     e.classList.remove("set-active");
@@ -29,9 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 })
             },
-            click: function() {
-                //console.log('index', this.clickedIndex);
-                //swiper.slideTo(this.clickedIndex);    
+            click: function() {  
                 var activeSlide = document.querySelectorAll('.swiper-slide')[this.clickedIndex];
                 document.querySelectorAll(".swiper-slide").forEach((e) => {
                     e.classList.remove("set-active");
