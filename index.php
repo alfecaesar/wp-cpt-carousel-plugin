@@ -55,13 +55,13 @@ function cpt_carousel_enqueue_scripts() {
     wp_enqueue_style( 'swiper', 'https://unpkg.com/swiper/swiper-bundle.min.css' );
     
     // Custom CSS for the carousel
-    wp_enqueue_style( 'cpt-carousel-style', plugins_url( '/css/carousel-style.css', __FILE__ ), array(), null );
+    wp_enqueue_style( 'cpt-carousel-style', plugins_url( '/css/carousel-style.css', __FILE__ ), array(), "1.0.1" );
 
     // Swiper JS
     wp_enqueue_script( 'swiper-js', 'https://unpkg.com/swiper/swiper-bundle.min.js', array(), null, true );
 
     // Custom JS for the carousel
-    wp_enqueue_script( 'cpt-carousel-script', plugins_url( '/js/carousel-script.js', __FILE__ ), array( 'swiper-js' ), null, true );
+    wp_enqueue_script( 'cpt-carousel-script', plugins_url( '/js/carousel-script.js', __FILE__ ), array( 'swiper-js' ), "1.0.1", true );
 }
 add_action( 'wp_enqueue_scripts', 'cpt_carousel_enqueue_scripts' );
 
@@ -100,7 +100,14 @@ function cpt_carousel_shortcode() {
         </div>
         <div class="carousel-description">
             <?php while ( $query->have_posts() ) : $query->the_post(); ?>
-                <div class="swiper-content" data-id="<?php echo get_the_ID() ?>" style="display:none;"><?php the_content(); ?></div>
+                <div class="swiper-content" data-id="<?php echo get_the_ID() ?>" style="display:none;">
+                    <div class="swiper-content-title">
+                        <h3><?php the_title(); ?></h3>
+                    </div>
+                    <div class="swiper-content-gallery">
+                        <?php the_content(); ?>
+                    </div>
+                </div>
             <?php endwhile; ?>
         </div>
         <?php

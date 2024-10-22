@@ -11,6 +11,7 @@
     align-items: center;
     width: 100%;
     background-color: #ccc;
+    cursor: pointer;
 }
 
 .swiper-slide.set-active{
@@ -42,4 +43,14 @@
 
 .swiper-content{
     padding: 0 15px;
+}
+
+.swiper-content-title{
+    margin: 40px 0 30px;
+}
+
+.swiper-content-title h3{
+    text-align: center;
+    font-weight: 700;
+    text-transform: uppercase;
 }
