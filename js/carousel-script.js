@@ -1,3 +1,14 @@
+function stopYtVideoOnSlide(){
+    var stopAllYouTubeVideos = () => { 
+        var iframes = document.querySelectorAll('iframe');
+        Array.prototype.forEach.call(iframes, iframe => { 
+          iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', 
+        func: 'stopVideo' }), '*');
+       });
+      }
+    stopAllYouTubeVideos();
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     var swiper = new Swiper('.swiper-container-cpt', {
         loop: true,
@@ -26,7 +37,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     else{
                         e.classList.remove("set-show");
                     }
-                })
+                });
+                stopYtVideoOnSlide();
             },
             click: function() {  
                 var activeSlide = document.querySelectorAll('.swiper-slide')[this.clickedIndex];
@@ -42,7 +54,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     else{
                         e.classList.remove("set-show");
                     }
-                })
+                });
+                stopYtVideoOnSlide();
             }
         },
         breakpoints: {
